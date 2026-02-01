@@ -49,9 +49,8 @@ fi
 echo "Running benchmarks with GPU sizes: $GPU_SIZES"
 [ -n "$ACCOUNT_ARG" ] && echo "Using account: $ACCOUNT_ARG"
 
-# Submit jobs for each GPU size
-IFS=',' read -ra SIZES <<< "$GPU_SIZES"
-for G in "${SIZES[@]}"; do
+# Submit jobs for each GPU size (convert commas to spaces for iteration)
+for G in ${GPU_SIZES//,/ }; do
   echo "sbatch -G $G $ACCOUNT_ARG run_bms.sh"
   sbatch -G $G $ACCOUNT_ARG run_bms.sh
 done
