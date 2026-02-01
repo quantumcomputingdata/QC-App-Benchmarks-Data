@@ -68,14 +68,16 @@ This script determines the number of available GPUs from the **SLURM_GPUS** env 
 ```
 run_bms.sh
 ```
-If executed with **sbatch**, the number of GPUs can be specifed with the -G argument.
+If executed with **sbatch**, the number of GPUs can be specified with the -G argument.
 ```
 sbatch -G 4 run_bms.sh
 ```
-You can also op[tionally specify the NERSC account id to use as well a non-default email address to which to send notifications of completion.
+You can also optionally specify the NERSC account id to use as well as a non-default email address to which to send notifications of completion.
 ```
 sbatch -G 4 -A mNNNN --mail-user otheremail@emailservice.com run_bms.sh
 ```
+
+> **Note:** When running sbatch without the `-A` option, GPU allocations may be limited to 16 GPUs. To run with more than 16 GPUs, always specify your NERSC account explicitly with `-A`.
 
 ### Run All Benchmarks across a Range of GPU Counts
 
