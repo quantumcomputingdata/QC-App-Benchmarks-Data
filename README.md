@@ -77,11 +77,36 @@ You can also op[tionally specify the NERSC account id to use as well a non-defau
 sbatch -G 4 -A mNNNN --mail-user otheremail@emailservice.com run_bms.sh
 ```
 
-### Run All Benchmarks across a Range of GPU Counts.
+### Run All Benchmarks across a Range of GPU Counts
 
-The **run_bms_all.sh** script can be used to run all the benchmarks defined in **run_bms.sh**, but also sweeps over a range of GPU counts.
-```
-run_bms_all.sh
+The **run_bms_all.sh** script can be used to run all the benchmarks defined in **run_bms.sh**, submitting separate jobs for multiple GPU counts.
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `-A account` | NERSC project account | User's default |
+| `-g gpu_sizes` | GPU sizes to run | 1,2,4,8,16,32,64 |
+
+The `-g` option accepts:
+- **Comma-separated list:** `-g 2,8,64`
+- **Range (powers of 2):** `-g 4:32` (runs 4,8,16,32)
+- **Single value:** `-g 16`
+
+Examples:
+```bash
+# Run with default GPU sizes (1,2,4,8,16,32,64)
+./run_bms_all.sh
+
+# Run with specific account
+./run_bms_all.sh -A m1234
+
+# Run only specific GPU sizes
+./run_bms_all.sh -g 4,16,64
+
+# Run a range of GPU sizes (powers of 2 from 4 to 32)
+./run_bms_all.sh -g 4:32
+
+# Run single GPU size with specific account
+./run_bms_all.sh -A m1234 -g 8
 ```
 
 ### WORK-IN-PROGRESS - RCS benchmark
