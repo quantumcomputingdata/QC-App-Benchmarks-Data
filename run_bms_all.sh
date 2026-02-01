@@ -4,19 +4,19 @@
 DEFAULT_SIZES="1,2,4,8,16,32,64"
 
 # Parse arguments
-ACCOUNT_ARG=""
+ACCOUNT=""
 GPU_SPEC=""
 OPTIND=1  # Reset getopts index (needed if script is sourced)
 
 while getopts "A:g:" opt; do
   case $opt in
-    A) ACCOUNT_ARG="-A $OPTARG" ;;
+    A) ACCOUNT="$OPTARG" ;;
     g) GPU_SPEC="$OPTARG" ;;
     *) echo "Usage: $0 [-A account] [-g gpu_sizes]"
        echo ""
        echo "Options:"
-       echo "  -A account    NERSC project account (optional)"
-       echo "  -g gpu_sizes  GPU sizes to run (optional, default: $DEFAULT_SIZES)"
+       echo "  -A account    NERSC project account (default: user's default account)"
+       echo "  -g gpu_sizes  GPU sizes to run (default: $DEFAULT_SIZES)"
        echo ""
        echo "GPU sizes can be specified as:"
        echo "  - Comma-separated list: -g 2,8,64"
@@ -25,6 +25,12 @@ while getopts "A:g:" opt; do
        exit 1 ;;
   esac
 done
+
+# Use provided account or get default from sacctmgr
+if [ -z "$ACCOUNT" ]; then
+  ACCOUNT=$(sacctmgr show user $USER format=defaultaccount -n | tr -d ' ')
+fi
+ACCOUNT_ARG="-A $ACCOUNT"
 
 # Determine GPU sizes to use
 if [ -z "$GPU_SPEC" ]; then
@@ -47,7 +53,7 @@ else
 fi
 
 echo "Running benchmarks with GPU sizes: $GPU_SIZES"
-[ -n "$ACCOUNT_ARG" ] && echo "Using account: $ACCOUNT_ARG"
+echo "Using account: $ACCOUNT"
 
 # Submit jobs for each GPU size (convert commas to spaces for iteration)
 for G in ${GPU_SIZES//,/ }; do
