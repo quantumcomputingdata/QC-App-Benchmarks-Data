@@ -40,7 +40,7 @@ module load openmpi
 export CUDAQ_GPU_FABRIC=NVL
 #export UBACKEND_USE_FABRIC_HANDLE=0
 
-# This is a patch for a possible issue with CUDA-Q 0.12 setting up network connectivity
+# This is a patch for a reported issue with CUDA-Q 0.12 setting up network connectivity
 # The second value in the pair is specific to the number of GPUs used 
 # export CUDAQ_GLOBAL_INDEX_BITS="2,4"   # (for 64 gpus)
 # Compute the second value in pair using log2
