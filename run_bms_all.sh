@@ -6,6 +6,7 @@ DEFAULT_SIZES="1,2,4,8,16,32,64"
 # Parse arguments
 ACCOUNT_ARG=""
 GPU_SPEC=""
+OPTIND=1  # Reset getopts index (needed if script is sourced)
 
 while getopts "A:g:" opt; do
   case $opt in
