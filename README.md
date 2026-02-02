@@ -28,7 +28,7 @@ git clone https://github.com/quantumcomputingdata/qhpctools.git
 export PATH="$HOME/apps/qhpctools/bin:$HOME/bin"
 ```
 
-**TODO:** Need to describe here how to setup the python and cudea environments.
+**TODO:** Need to describe here how to setup the python and cudaq environments.
 
 ## Running Benchmarks on CUDA-Q
 
