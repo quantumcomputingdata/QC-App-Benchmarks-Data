@@ -28,7 +28,7 @@ git clone https://github.com/quantumcomputingdata/qhpctools.git
 export PATH="$HOME/apps/qhpctools/bin:$HOME/bin"
 ```
 
-**TODO:** Need to describe here how to setup the python and cudaq environments.
+**NOTE:** The **qhpctools** README contains a "cheat sheet" for commands commonly used when working with HPC systems and SLURM.
 
 ## Setting up the environment
 
