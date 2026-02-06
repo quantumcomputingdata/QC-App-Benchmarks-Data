@@ -30,7 +30,21 @@ export PATH="$HOME/apps/qhpctools/bin:$HOME/bin"
 
 **TODO:** Need to describe here how to setup the python and cudaq environments.
 
-## Running Benchmarks on CUDA-Q
+## Setting up the environment
+
+When executing the QED-C benchmarks or other related project code, we make use of Qiskit, CUDA-Q, and MPI. The instructionshere assume you are familiar with setting up a Python environment on a Linux OS.
+
+In your .bashrc file (which is executed on login and at the start of a SLURM job), be sure to include these modules:
+```
+module load openmpi
+module load python/3.12
+```
+Qiskit and CUDA-Q should be available as pip packages as usual.
+```
+pip install qiskit
+pip install cudaq
+... along with any other packages required by the benchmarks or your custom code.
+```
 
 **NOTE:** The documentation here describes the current set of scripts that have been used for generating datasets from the QED-C benchmarks on GPU systems. The scripts will eveolve as the projects that use them evolve. For now, they can be thought of as starting points for user customization.
 
