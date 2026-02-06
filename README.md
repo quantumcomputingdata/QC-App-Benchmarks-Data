@@ -32,7 +32,7 @@ export PATH="$HOME/apps/qhpctools/bin:$HOME/bin"
 
 ## Setting up the environment
 
-When executing the QED-C benchmarks or other related project code, we make use of Qiskit, CUDA-Q, and MPI. The instructionshere assume you are familiar with setting up a Python environment on a Linux OS.
+When executing the QED-C benchmarks or other related project code, we make use of Qiskit, CUDA-Q, and MPI. The instructions here assume you are familiar with setting up a Python environment on a Linux OS.
 
 In your .bashrc file (which is executed on login and at the start of a SLURM job), be sure to include these modules:
 ```
