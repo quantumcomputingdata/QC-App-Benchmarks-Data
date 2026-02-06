@@ -48,7 +48,7 @@ pip install cudaq
 
 **NOTE:** The documentation here describes the current set of scripts that have been used for generating datasets from the QED-C benchmarks on GPU systems. The scripts will eveolve as the projects that use them evolve. For now, they can be thought of as starting points for user customization.
 
-**NOTE:** The **srun** scripts below use the default NERSC account id associated with your username. They do not currently provide a way to pass a different NERSC account id.  This is available only when using the **run_bms.sh** script below.
+**NOTE:** The **srun** scripts below use the default NERSC account id associated with your username. They do not currently provide a way to pass a different NERSC account id.  Executing code in a different project is available only when using the **run_bms.sh** script below.
 
 ### Single-GPU Execution
 
