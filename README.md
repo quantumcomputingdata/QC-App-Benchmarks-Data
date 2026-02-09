@@ -81,8 +81,8 @@ source srun_hamlib_m3.sh 4 25 26      # use method 3 for fidelity check
 
 ### Run All Benchmarks from One Script and Sweep Available Qubit Widths
 
-The **run_bms.sh** script is provided for convenience.  It sweeps over a selected range of qubit widths that will maximize the avaiable memory across the given mumber of GPUs and executes the available benchmarks.  Note this script can take a long time. You can comment out parts if you would like to reduce the range of execution.
-This script determines the number of available GPUs from the **SLURM_GPUS** env variable and requires no other arguments, as the sweep range is hardcoded.
+The **run_bms.sh** script is provided for convenience.  It sweeps over a range of qubit widths that is calculated to maximize the avaiable memory across the available GPUs and executes a set of several representative  benchmarks.  Note this script can take a long time, possibly minutes. You can comment out parts if you would like to reduce the range of qubit widths or benchmarks executed.
+This script determines the number of available GPUs from the **SLURM_GPUS** environment variable and requires no other arguments, as the sweep range is calculated based on this value.
 ```
 run_bms.sh
 ```
