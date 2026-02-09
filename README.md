@@ -61,15 +61,19 @@ python -m hidden_shift.hs_benchmark -a cudaq
 
 ### Multi-GPU Execution
 
-To execute the benchmarks on multiple GPUs using the mgpu aggregation of state across the GPUs, use the **srun** command (shown here for 4 GPUs):
+To execute the benchmarks on multiple GPUs using the mgpu aggregation of state across the GPUs, first allocate the number of GPUs on which you would like to run. The following command allocates 4 GPUs and logs you into the first of these, from where you can run multi-GPU experiments. (see the qhpctools doc for more options)
+```
+alloc_gpus.sh -G 4
+```
+Once connected to the GPUs, use the **srun** command to execute any of the benchmark programs (shown here for 4 GPUs):
 ```
 srun -n 4 python -m mpi4py -m hidden_shift.hs_benchmark -a cudaq    # {add'l args, e.g. -n 4}
 ```
-The **srun_bm.sh** script is provided to make this more convenient.  Pass the NUM_GPUS, MIN, MAX args follwed by the BMDIR and BMNAME, e.g
+The default behavior of the benchmarks is to execute over a range of qubit widths, from 2 to 8 qubits. You can modify the range and other parameters using the arguments presented using the --help argument to the benchmark program. For convenience, the **srun_bm.sh** script is provided to easily control the number of GPUs to use and the range of qubit widths.  Pass the NUM_GPUS, MIN, MAX args follwed by the BMDIR and BMNAME, e.g
 ```
 source srun_bm.sh 4 25 26 quantum_fourier_transform qft_benchmark
 ```
-We also have two scripts for running hamlib wihc is tread as a special case since it has some spp-specific arguments. 
+We provide two additional scripts for running the **hamlib** benchmark, which is treated as a special case, since it has several app-specific arguments. 
 ```
 source srun_hamlib.sh 4 25 26         # use observable method
 source srun_hamlib_m3.sh 4 25 26      # use method 3 for fidelity check
