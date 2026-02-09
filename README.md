@@ -1,4 +1,4 @@
-# QC-App-Oriented-Benchmarks Data Repository
+# QC-App-Oriented-Benchmarks Workspace and Data Repository
 
 This repository contains assorted scripts, notebooks, and programs useful for executing the QED-C Application-Oriented Benchmarks on various quantum computing systems.
 
