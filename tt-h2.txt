@@ -1,0 +1,205 @@
+source run_hamlib_test.sh 16 8 20 -s 10000 -ham chemistry/electronic/standard/H2 -params "ham_BK:"
+Tue Mar 10 11:13:38 AM PDT 2026: Executing HamLib Benchmark on 16 GPUs ...
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 8 -max 20 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham chemistry/electronic/standard/H2 -params ham_BK: -g SpinOperator on one GPU
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = chemistry/electronic/standard/H2, {'ham_BK': ''}
+... group_method = SpinOperator
+... execution starting at Mar 10, 2026 18:14:15 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 8
+... dataset_name = ham_BK-8
+... number of terms in Hamiltonian = 185
+... quantum execution time = 0.342
+... exact computation time = 0.261 sec
+
+    Exact expectation value, computed classically: 0.2017
+    Estimated expectation value, from quantum algorithm: -0.7983
+    ==> Simulation Quality: -3.958
+
+************
+Executing [1] circuits with num_qubits = 12
+... dataset_name = ham_BK-12
+... number of terms in Hamiltonian = 327
+... quantum execution time = 0.045
+... exact computation time = 0.822 sec
+
+    Exact expectation value, computed classically: 1.7957
+    Estimated expectation value, from quantum algorithm: 0.7957
+    ==> Simulation Quality: 0.443
+
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = ham_BK-20
+... number of terms in Hamiltonian = 2951
+... quantum execution time = 0.601
+
+    Estimated expectation value, from quantum algorithm: 6.9745
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 18:14:17 UTC in 2.1 secs
+
+WARNING: cannot load metrics file: __data/nvidia/HamLib-obs-chemistry_electronic_standard_H2.json
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 8 -max 20 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham chemistry/electronic/standard/H2 -params ham_BK: -g SpinOperator with MPI Shared GPUs
+Initializing MPI...Using 16 tasks
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = chemistry/electronic/standard/H2, {'ham_BK': ''}
+... group_method = SpinOperator
+... execution starting at Mar 10, 2026 18:15:35 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 8
+... dataset_name = ham_BK-8
+... number of terms in Hamiltonian = 185
+... quantum execution time = 0.141
+... exact computation time = 0.265 sec
+
+    Exact expectation value, computed classically: 0.2017
+    Estimated expectation value, from quantum algorithm: -0.7983
+    ==> Simulation Quality: -3.958
+
+************
+Executing [1] circuits with num_qubits = 12
+... dataset_name = ham_BK-12
+... number of terms in Hamiltonian = 327
+... quantum execution time = 0.04
+... exact computation time = 0.809 sec
+
+    Exact expectation value, computed classically: 1.7957
+    Estimated expectation value, from quantum algorithm: 0.7957
+    ==> Simulation Quality: 0.443
+
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = ham_BK-20
+... number of terms in Hamiltonian = 2951
+... quantum execution time = 0.468
+
+    Estimated expectation value, from quantum algorithm: 6.9745
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 18:15:37 UTC in 2.438 secs
+
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 8 -max 20 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham chemistry/electronic/standard/H2 -params ham_BK: -g simple on one GPU
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = chemistry/electronic/standard/H2, {'ham_BK': ''}
+... group_method = simple
+... execution starting at Mar 10, 2026 18:16:42 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 8
+... dataset_name = ham_BK-8
+... number of terms in Hamiltonian = 185
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 54
+... quantum execution time = 0.917
+... exact computation time = 0.259 sec
+
+    Exact expectation value, computed classically: 0.2017
+    Estimated expectation value, from quantum algorithm: 0.1853
+    ==> Simulation Quality: 0.919
+
+************
+Executing [1] circuits with num_qubits = 12
+... dataset_name = ham_BK-12
+... number of terms in Hamiltonian = 327
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 59
+... quantum execution time = 1.127
+... exact computation time = 0.822 sec
+
+    Exact expectation value, computed classically: 1.7957
+    Estimated expectation value, from quantum algorithm: 1.818
+    ==> Simulation Quality: 1.012
+
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = ham_BK-20
+... number of terms in Hamiltonian = 2951
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 1251
+... quantum execution time = 283.814
+
+    Estimated expectation value, from quantum algorithm: 7.799
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 18:21:29 UTC in 286.968 secs
+
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 8 -max 20 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham chemistry/electronic/standard/H2 -params ham_BK: -g simple on MPI parallel GPUs
+Initializing MPI...Using 16 tasks
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = chemistry/electronic/standard/H2, {'ham_BK': ''}
+... group_method = simple
+... execution starting at Mar 10, 2026 18:23:01 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 8
+... dataset_name = ham_BK-8
+... number of terms in Hamiltonian = 185
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 54
+... MPI parallel: 16 ranks, 54 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 4), (4, 4), (8, 4), (12, 4), (16, 4), (20, 4), (24, 3), (27, 3), (30, 3), (33, 3), (36, 3), (39, 3), (42, 3), (45, 3), (48, 3), (51, 3)] circuits per rank
+... Gathered 54 results from 16 ranks
+... quantum execution time = 0.23
+... exact computation time = 0.266 sec
+
+    Exact expectation value, computed classically: 0.2017
+    Estimated expectation value, from quantum algorithm: 0.2007
+    ==> Simulation Quality: 0.995
+
+************
+Executing [1] circuits with num_qubits = 12
+... dataset_name = ham_BK-12
+... number of terms in Hamiltonian = 327
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 59
+... MPI parallel: 16 ranks, 59 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 4), (4, 4), (8, 4), (12, 4), (16, 4), (20, 4), (24, 4), (28, 4), (32, 4), (36, 4), (40, 4), (44, 3), (47, 3), (50, 3), (53, 3), (56, 3)] circuits per rank
+... Gathered 59 results from 16 ranks
+... quantum execution time = 0.188
+... exact computation time = 0.828 sec
+
+    Exact expectation value, computed classically: 1.7957
+    Estimated expectation value, from quantum algorithm: 1.8064
+    ==> Simulation Quality: 1.006
+
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = ham_BK-20
+... number of terms in Hamiltonian = 2951
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 1251
+... MPI parallel: 16 ranks, 1251 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 79), (79, 79), (158, 79), (237, 78), (315, 78), (393, 78), (471, 78), (549, 78), (627, 78), (705, 78), (783, 78), (861, 78), (939, 78), (1017, 78), (1095, 78), (1173, 78)] circuits per rank
+... Gathered 1251 results from 16 ranks
+... quantum execution time = 20.506
+
+    Estimated expectation value, from quantum algorithm: 7.8454
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 18:23:24 UTC in 22.622 secs
+
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----

@@ -10,6 +10,10 @@
 
 The QED-C Hamiltonian Simulation benchmark supports multiple execution modes for CUDA-Q that leverage multi-GPU systems in different ways. This document summarizes recent work to implement and test parallel circuit execution across multiple GPUs.
 
+### Hamiltonians Used
+
+The Hamiltonians used in this benchmarking are part of the **QED-C Application-Oriented Benchmarks** suite and are extracted from the **NERSC HamLib** library of Hamiltonians. HamLib provides a standardized collection of Hamiltonians for quantum simulation benchmarking across different physical systems including condensed matter physics and quantum chemistry.
+
 ### Execution Modes
 
 There are two fundamentally different approaches to utilizing multiple GPUs:
@@ -129,6 +133,32 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 
 ---
 
+### Test 3: H2 (Hydrogen) Hamiltonian (16 GPUs)
+
+**Hamiltonian:** `chemistry/electronic/standard/H2`
+**Parameters:** ham_BK:
+**Note:** Only 8, 12, and 20 qubit sizes available in HamLib for this Hamiltonian.
+
+#### SpinOperator Method (Single Circuit, State Vector Parallelization)
+
+| Qubits | Terms | Single GPU (sec) | mgpu 16 GPUs (sec) | Speedup |
+|--------|-------|------------------|--------------------| --------|
+| 8      | 185   | 0.342            | 0.141              | 2.4x    |
+| 12     | 327   | 0.045            | 0.040              | 1.1x    |
+| 20     | 2951  | 0.601            | 0.468              | 1.3x    |
+
+#### Simple Sampling Method (Multiple Circuits, Parallel Execution)
+
+| Qubits | Circuits | Single GPU (sec) | -pm mpi 16 GPUs (sec) | Speedup |
+|--------|----------|------------------|-----------------------|---------|
+| 8      | 54       | 0.917            | 0.230                 | 4.0x    |
+| 12     | 59       | 1.127            | 0.188                 | 6.0x    |
+| 20     | 1251     | 283.814          | 20.506                | **13.8x** |
+
+**Note:** H2 at 20 qubits has 2951 Hamiltonian terms that group into 1251 circuits. With ~78 circuits per GPU, this workload achieves excellent parallel efficiency approaching the theoretical maximum of 16x.
+
+---
+
 ### Summary Comparison at 28 Qubits
 
 #### TFIM (simple structure, 2 circuit groups)
@@ -149,15 +179,27 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 | Simple, 1 GPU | 53.541 | - | 9 circuits sequential |
 | Simple, -pm mpi 16 GPUs | 6.503 | **8.2x** | 9 circuits parallel |
 
+#### H2 at 20 Qubits (chemistry, 1251 circuit groups)
+
+| Configuration | Time (sec) | Speedup | Notes |
+|---------------|------------|---------|-------|
+| SpinOperator, 1 GPU | 0.601 | - | Baseline |
+| SpinOperator, mgpu 16 GPUs | 0.468 | 1.3x | State vector distributed |
+| Simple, 1 GPU | 283.814 | - | 1251 circuits sequential |
+| Simple, -pm mpi 16 GPUs | 20.506 | **13.8x** | 1251 circuits parallel (~78/GPU) |
+
 ---
 
 ## Key Findings
 
-1. **SpinOperator + mgpu** provides modest speedup (1.4x-2.9x) but can be **slower** for mid-sized circuits (26 qubits TFIM) due to communication overhead.
+1. **SpinOperator + mgpu** provides modest speedup (1.1x-2.9x) but can be **slower** for mid-sized circuits (26 qubits TFIM) due to communication overhead.
 
-2. **Simple + parallel execution (-pm mpi)** scales well when there are enough circuits to distribute. Bose-Hubbard achieves 8.2x speedup with 9 circuits on 16 GPUs.
+2. **Simple + parallel execution (-pm mpi)** scales well when there are enough circuits to distribute:
+   - TFIM: 1.9x speedup (only 2 circuits)
+   - Bose-Hubbard: 8.2x speedup (9 circuits)
+   - **H2: 13.8x speedup (1251 circuits)** - approaching theoretical 16x maximum
 
-3. **Circuit count matters:** TFIM groups into only 2 circuits, limiting parallel speedup to 2x maximum. Hamiltonians with more circuit groups benefit more from `-pm mpi`.
+3. **Circuit count matters:** TFIM groups into only 2 circuits, limiting parallel speedup to 2x maximum. H2 chemistry Hamiltonians produce many more circuit groups (1251 at 20 qubits), enabling near-linear scaling with GPU count.
 
 4. **Idle GPUs:** When circuits < GPUs, some ranks have no work. Distribution shows this clearly:
    ```
@@ -248,3 +290,4 @@ python benchmark.py -a cudaq ...
 
 - `tt-tfim.txt` - TFIM benchmark output
 - `tt-bh.txt` - Bose-Hubbard benchmark output
+- `tt-h2.txt` - H2 (Hydrogen) chemistry benchmark output
