@@ -166,6 +166,39 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 
 ---
 
+## Observation: Anomalous mgpu Scaling at 26 Qubits (TFIM)
+
+**Status: Needs further explanation**
+
+The TFIM SpinOperator results show an unexpected pattern where mgpu mode is actually **slower** at 26 qubits:
+
+| Qubits | State Vector Size | Single GPU (sec) | mgpu 16 GPUs (sec) | Speedup |
+|--------|-------------------|------------------|--------------------| --------|
+| 24     | 2^24 = 16M amps   | 0.051            | 0.016              | 3.2x    |
+| 26     | 2^26 = 67M amps   | 0.191            | 0.378              | **0.5x** |
+| 28     | 2^28 = 268M amps  | 0.842            | 0.607              | 1.4x    |
+
+This result appears to be **reproducible** across multiple runs.
+
+### Possible Explanation
+
+At 26 qubits, the state vector may be in a "crossover zone" where:
+- The state vector is large enough to require significant inter-node MPI communication (16 GPUs span 4 nodes on Perlmutter)
+- The computation time (~0.2 sec) is not long enough to amortize this communication overhead
+- At 28 qubits, computation time increases sufficiently that parallelization benefits outweigh communication costs
+
+This pattern is characteristic of distributed computing where there exists a problem size range that is:
+- Too large for efficient single-node execution
+- Too small for multi-node computation to dominate over communication latency
+
+### Why TFIM and not Bose-Hubbard?
+
+TFIM has relatively few Hamiltonian terms (40-56) and shallow circuit depth, making the computation-to-communication ratio lower. Bose-Hubbard (300-450 terms, deeper circuits) has longer computation times that better amortize MPI overhead.
+
+**Further investigation needed** to confirm this hypothesis and determine if this is specific to the TFIM structure or a general characteristic of mgpu scaling at certain qubit counts.
+
+---
+
 ## Implementation Details
 
 ### Files Modified
