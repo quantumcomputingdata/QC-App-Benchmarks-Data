@@ -1,0 +1,277 @@
+source run_hamlib_test.sh 16 20 28 -s 10000 -ham  condensedmatter/tfim/tfim -params 1D-grid:pbc,h:2
+Tue Mar 10 10:30:26 AM PDT 2026: Executing HamLib Benchmark on 16 GPUs ...
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 20 -max 28 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham condensedmatter/tfim/tfim -params 1D-grid:pbc,h:2 -g SpinOperator on one GPU
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = condensedmatter/tfim/tfim, {'1D-grid': 'pbc', 'h': '2'}
+... group_method = SpinOperator
+... execution starting at Mar 10, 2026 17:31:37 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-20_h-2
+... number of terms in Hamiltonian = 40
+... quantum execution time = 0.431
+
+    Estimated expectation value, from quantum algorithm: -20.4321
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 22
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-22_h-2
+... number of terms in Hamiltonian = 44
+... quantum execution time = 0.032
+
+    Estimated expectation value, from quantum algorithm: -22.3753
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 24
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-24_h-2
+... number of terms in Hamiltonian = 48
+... quantum execution time = 0.051
+
+    Estimated expectation value, from quantum algorithm: -24.3185
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 26
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-26_h-2
+... number of terms in Hamiltonian = 52
+... quantum execution time = 0.191
+
+    Estimated expectation value, from quantum algorithm: -26.2617
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 28
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-28_h-2
+... number of terms in Hamiltonian = 56
+... quantum execution time = 0.842
+
+    Estimated expectation value, from quantum algorithm: -28.2049
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 17:31:39 UTC in 1.588 secs
+
+WARNING: cannot load metrics file: __data/nvidia/HamLib-obs-condensedmatter_tfim_tfim.json
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 20 -max 28 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham condensedmatter/tfim/tfim -params 1D-grid:pbc,h:2 -g SpinOperator with MPI Shared GPUs
+Initializing MPI...Using 16 tasks
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = condensedmatter/tfim/tfim, {'1D-grid': 'pbc', 'h': '2'}
+... group_method = SpinOperator
+... execution starting at Mar 10, 2026 17:33:31 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-20_h-2
+... number of terms in Hamiltonian = 40
+... quantum execution time = 0.115
+
+    Estimated expectation value, from quantum algorithm: -20.4321
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 22
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-22_h-2
+... number of terms in Hamiltonian = 44
+... quantum execution time = 0.015
+
+    Estimated expectation value, from quantum algorithm: -22.9042
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 24
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-24_h-2
+... number of terms in Hamiltonian = 48
+... quantum execution time = 0.016
+
+    Estimated expectation value, from quantum algorithm: -25.0
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 26
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-26_h-2
+... number of terms in Hamiltonian = 52
+... quantum execution time = 0.378
+
+    Estimated expectation value, from quantum algorithm: -26.2613
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 28
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-28_h-2
+... number of terms in Hamiltonian = 56
+... quantum execution time = 0.607
+
+    Estimated expectation value, from quantum algorithm: -28.2045
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 17:34:43 UTC in 71.566 secs
+
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 20 -max 28 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham condensedmatter/tfim/tfim -params 1D-grid:pbc,h:2 -g simple on one GPU
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = condensedmatter/tfim/tfim, {'1D-grid': 'pbc', 'h': '2'}
+... group_method = simple
+... execution starting at Mar 10, 2026 17:35:48 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-20_h-2
+... number of terms in Hamiltonian = 40
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... quantum execution time = 0.422
+
+    Estimated expectation value, from quantum algorithm: -19.3608
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 22
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-22_h-2
+... number of terms in Hamiltonian = 44
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... quantum execution time = 0.184
+
+    Estimated expectation value, from quantum algorithm: -21.224
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 24
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-24_h-2
+... number of terms in Hamiltonian = 48
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... quantum execution time = 0.267
+
+    Estimated expectation value, from quantum algorithm: -23.3392
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 26
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-26_h-2
+... number of terms in Hamiltonian = 52
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... quantum execution time = 0.555
+
+    Estimated expectation value, from quantum algorithm: -25.3736
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 28
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-28_h-2
+... number of terms in Hamiltonian = 56
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... quantum execution time = 1.699
+
+    Estimated expectation value, from quantum algorithm: -26.9936
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 17:35:51 UTC in 3.16 secs
+
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----
+=========================================================================
+Running hamlib.hamlib_simulation_benchmark -a cudaq -c 1 -s 1000 -min 20 -max 28 -k 1 --time 0.1 -obs -m 4 -s 10000 -ham condensedmatter/tfim/tfim -params 1D-grid:pbc,h:2 -g simple on MPI parallel GPUs
+Initializing MPI...Using 16 tasks
+Hamiltonian Simulation Benchmark Program - cudaq
+... hamiltonian and params = condensedmatter/tfim/tfim, {'1D-grid': 'pbc', 'h': '2'}
+... group_method = simple
+... execution starting at Mar 10, 2026 17:37:40 UTC
+... configure execution for target backend_id = nvidia
+************
+Executing [1] circuits with num_qubits = 20
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-20_h-2
+... number of terms in Hamiltonian = 40
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... MPI parallel: 16 ranks, 2 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 1), (1, 1), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0)] circuits per rank
+... Gathered 2 results from 16 ranks
+... quantum execution time = 0.228
+
+    Estimated expectation value, from quantum algorithm: -19.5056
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 22
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-22_h-2
+... number of terms in Hamiltonian = 44
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... MPI parallel: 16 ranks, 2 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 1), (1, 1), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0)] circuits per rank
+... Gathered 2 results from 16 ranks
+... quantum execution time = 0.117
+
+    Estimated expectation value, from quantum algorithm: -21.5088
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 24
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-24_h-2
+... number of terms in Hamiltonian = 48
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... MPI parallel: 16 ranks, 2 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 1), (1, 1), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0)] circuits per rank
+... Gathered 2 results from 16 ranks
+... quantum execution time = 0.172
+
+    Estimated expectation value, from quantum algorithm: -23.2968
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 26
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-26_h-2
+... number of terms in Hamiltonian = 52
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... MPI parallel: 16 ranks, 2 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 1), (1, 1), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0)] circuits per rank
+... Gathered 2 results from 16 ranks
+... quantum execution time = 0.31
+
+    Estimated expectation value, from quantum algorithm: -25.0216
+    ==> Simulation Quality: 0.0
+
+************
+Executing [1] circuits with num_qubits = 28
+... dataset_name = graph-1D-grid-pbc-qubitnodes_Lx-28_h-2
+... number of terms in Hamiltonian = 56
+... using CUDA-Q Sampling, group_method = simple
+... number of circuits to execute = 2
+... MPI parallel: 16 ranks, 2 circuits
+... Setting single-GPU target (overriding mgpu)
+... Distribution: [(0, 1), (1, 1), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0), (2, 0)] circuits per rank
+... Gathered 2 results from 16 ranks
+... quantum execution time = 0.898
+
+    Estimated expectation value, from quantum algorithm: -27.1552
+    ==> Simulation Quality: 0.0
+
+... execution complete at Mar 10, 2026 17:37:44 UTC in 4.134 secs
+
+Sample Circuit:
+  ... too large!
+----- Expectation Value Plot -----
+----- Expectation Time Plot -----
