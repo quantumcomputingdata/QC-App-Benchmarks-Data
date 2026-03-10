@@ -1,0 +1,68 @@
+[
+  {
+    "exp_time_computed": 0.148,
+    "exp_time_exact": null,
+    "exp_value_computed": 298.9903,
+    "exp_value_exact": null,
+    "group": 20,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 319
+  },
+  {
+    "exp_time_computed": 0.249,
+    "exp_time_exact": null,
+    "exp_value_computed": 358.9583,
+    "exp_value_exact": null,
+    "group": 24,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 389
+  },
+  {
+    "exp_time_computed": 4.491,
+    "exp_time_exact": null,
+    "exp_value_computed": 418.8785,
+    "exp_value_exact": null,
+    "group": 28,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 459
+  },
+  {
+    "exp_time_computed": 0.43,
+    "exp_time_exact": null,
+    "exp_value_computed": 299.9835,
+    "exp_value_exact": null,
+    "group": 20,
+    "group_method": "simple",
+    "num_circuits_to_execute": 11,
+    "simulation_quality": 0.0,
+    "term_count": 319
+  },
+  {
+    "exp_time_computed": 1.458,
+    "exp_time_exact": null,
+    "exp_value_computed": 360.1107,
+    "exp_value_exact": null,
+    "group": 24,
+    "group_method": "simple",
+    "num_circuits_to_execute": 9,
+    "simulation_quality": 0.0,
+    "term_count": 389
+  },
+  {
+    "exp_time_computed": 18.226,
+    "exp_time_exact": null,
+    "exp_value_computed": 419.8182,
+    "exp_value_exact": null,
+    "group": 28,
+    "group_method": "simple",
+    "num_circuits_to_execute": 9,
+    "simulation_quality": 0.0,
+    "term_count": 459
+  }
+]
