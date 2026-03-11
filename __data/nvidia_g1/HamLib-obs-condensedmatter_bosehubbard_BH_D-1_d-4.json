@@ -1,6 +1,6 @@
 [
   {
-    "exp_time_computed": 0.473,
+    "exp_time_computed": 68.387,
     "exp_time_exact": null,
     "exp_value_computed": 298.9903,
     "exp_value_exact": null,
@@ -11,7 +11,7 @@
     "term_count": 319
   },
   {
-    "exp_time_computed": 0.406,
+    "exp_time_computed": 0.405,
     "exp_time_exact": null,
     "exp_value_computed": 358.9872,
     "exp_value_exact": null,
@@ -22,7 +22,7 @@
     "term_count": 389
   },
   {
-    "exp_time_computed": 6.305,
+    "exp_time_computed": 6.3,
     "exp_time_exact": null,
     "exp_value_computed": 418.9815,
     "exp_value_exact": null,
@@ -33,9 +33,9 @@
     "term_count": 459
   },
   {
-    "exp_time_computed": 0.646,
+    "exp_time_computed": 0.648,
     "exp_time_exact": null,
-    "exp_value_computed": 300.7,
+    "exp_value_computed": 300.3,
     "exp_value_exact": null,
     "group": 20,
     "group_method": "simple",
@@ -44,9 +44,9 @@
     "term_count": 319
   },
   {
-    "exp_time_computed": 3.156,
+    "exp_time_computed": 3.152,
     "exp_time_exact": null,
-    "exp_value_computed": 359.7027,
+    "exp_value_computed": 360.9459,
     "exp_value_exact": null,
     "group": 24,
     "group_method": "simple",
@@ -55,9 +55,9 @@
     "term_count": 389
   },
   {
-    "exp_time_computed": 52.862,
+    "exp_time_computed": 52.857,
     "exp_time_exact": null,
-    "exp_value_computed": 420.8468,
+    "exp_value_computed": 420.5676,
     "exp_value_exact": null,
     "group": 28,
     "group_method": "simple",

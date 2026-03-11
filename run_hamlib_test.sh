@@ -13,7 +13,7 @@ echo "$(date): Executing HamLib Benchmark on $NUM_GPUS GPUs ..."
 
 # pushd hamlib
 
-appargs=(-a cudaq -c 1 -s 1000 -min $MIN -max $MAX -k 1 --time 0.1 -obs -m 4 $@)
+appargs=(-a cudaq -c 1 -s 10000 -min $MIN -max $MAX -k 1 --time 0.1 -obs -m 4 $@)
 
 #echo srun -n $NUM_GPUS python -m mpi4py -m hamlib.hamlib_simulation_benchmark "${appargs[@]}" 
 

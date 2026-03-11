@@ -1,6 +1,6 @@
 [
   {
-    "exp_time_computed": 0.134,
+    "exp_time_computed": 0.145,
     "exp_time_exact": null,
     "exp_value_computed": -20.4321,
     "exp_value_exact": null,
@@ -11,7 +11,7 @@
     "term_count": 40
   },
   {
-    "exp_time_computed": 0.02,
+    "exp_time_computed": 0.012,
     "exp_time_exact": null,
     "exp_value_computed": -22.8978,
     "exp_value_exact": null,
@@ -22,7 +22,7 @@
     "term_count": 44
   },
   {
-    "exp_time_computed": 0.037,
+    "exp_time_computed": 0.015,
     "exp_time_exact": null,
     "exp_value_computed": -25.0,
     "exp_value_exact": null,
@@ -33,7 +33,7 @@
     "term_count": 48
   },
   {
-    "exp_time_computed": 0.381,
+    "exp_time_computed": 0.353,
     "exp_time_exact": null,
     "exp_value_computed": -26.2613,
     "exp_value_exact": null,
@@ -44,7 +44,7 @@
     "term_count": 52
   },
   {
-    "exp_time_computed": 0.591,
+    "exp_time_computed": 0.569,
     "exp_time_exact": null,
     "exp_value_computed": -28.2045,
     "exp_value_exact": null,
@@ -55,9 +55,9 @@
     "term_count": 56
   },
   {
-    "exp_time_computed": 0.149,
+    "exp_time_computed": 0.138,
     "exp_time_exact": null,
-    "exp_value_computed": -20.104,
+    "exp_value_computed": -19.264,
     "exp_value_exact": null,
     "group": 20,
     "group_method": "simple",
@@ -66,9 +66,9 @@
     "term_count": 40
   },
   {
-    "exp_time_computed": 0.037,
+    "exp_time_computed": 0.041,
     "exp_time_exact": null,
-    "exp_value_computed": -21.976,
+    "exp_value_computed": -21.48,
     "exp_value_exact": null,
     "group": 22,
     "group_method": "simple",
@@ -77,9 +77,9 @@
     "term_count": 44
   },
   {
-    "exp_time_computed": 0.067,
+    "exp_time_computed": 0.069,
     "exp_time_exact": null,
-    "exp_value_computed": -23.952,
+    "exp_value_computed": -22.864,
     "exp_value_exact": null,
     "group": 24,
     "group_method": "simple",
@@ -88,9 +88,9 @@
     "term_count": 48
   },
   {
-    "exp_time_computed": 0.206,
+    "exp_time_computed": 0.202,
     "exp_time_exact": null,
-    "exp_value_computed": -25.376,
+    "exp_value_computed": -26.016,
     "exp_value_exact": null,
     "group": 26,
     "group_method": "simple",
@@ -99,9 +99,9 @@
     "term_count": 52
   },
   {
-    "exp_time_computed": 0.775,
+    "exp_time_computed": 0.772,
     "exp_time_exact": null,
-    "exp_value_computed": -27.488,
+    "exp_value_computed": -26.648,
     "exp_value_exact": null,
     "group": 28,
     "group_method": "simple",
