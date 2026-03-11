@@ -1,8 +1,8 @@
 [
   {
-    "exp_time_computed": 0.157,
+    "exp_time_computed": 0.027,
     "exp_time_exact": null,
-    "exp_value_computed": -19.392,
+    "exp_value_computed": -19.216,
     "exp_value_exact": null,
     "group": 20,
     "group_method": "simple",

@@ -1,6 +1,6 @@
 [
   {
-    "exp_time_computed": 0.323,
+    "exp_time_computed": 0.009,
     "exp_time_exact": null,
     "exp_value_computed": -20.4321,
     "exp_value_exact": null,
@@ -55,9 +55,9 @@
     "term_count": 56
   },
   {
-    "exp_time_computed": 0.413,
+    "exp_time_computed": 0.027,
     "exp_time_exact": null,
-    "exp_value_computed": -19.816,
+    "exp_value_computed": -19.416,
     "exp_value_exact": null,
     "group": 20,
     "group_method": "simple",
