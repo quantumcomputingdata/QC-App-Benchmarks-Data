@@ -1,0 +1,335 @@
+{
+  "Benchmark Results - Hamiltonian Simulation - Qiskit": {
+    "backend_id": "nvidia",
+    "circuit_metrics": null,
+    "end_time": 1769958229.8157434,
+    "group_metrics": {
+      "avg_create_times": [
+        0.003,
+        0.002
+      ],
+      "avg_depths": [
+        2500.0,
+        2704.0
+      ],
+      "avg_elapsed_times": [
+        0.256,
+        0.203
+      ],
+      "avg_exec_creating_times": [],
+      "avg_exec_running_times": [],
+      "avg_exec_times": [
+        0.256,
+        0.203
+      ],
+      "avg_exec_validating_times": [],
+      "avg_fidelities": [
+        1.0,
+        1.0
+      ],
+      "avg_hf_fidelities": [
+        1.0,
+        1.0
+      ],
+      "avg_tr_depths": [
+        2500.0,
+        2704.0
+      ],
+      "avg_tr_n2qs": [
+        1875.0,
+        2028.0
+      ],
+      "avg_tr_xis": [
+        0.5,
+        0.5
+      ],
+      "avg_xis": [
+        0.5,
+        0.5
+      ],
+      "groups": [
+        "25",
+        "26"
+      ],
+      "job_ids": [
+        [],
+        []
+      ],
+      "std_create_times": [
+        0.0,
+        0.0
+      ],
+      "std_elapsed_times": [
+        0.0,
+        0.0
+      ],
+      "std_exec_times": [
+        0.0,
+        0.0
+      ],
+      "std_fidelities": [
+        0.0,
+        0.0
+      ],
+      "std_hf_fidelities": [
+        0.0,
+        0.0
+      ]
+    },
+    "start_time": 1769958224.717898
+  },
+  "Benchmark Results - Hidden Shift - cudaq": {
+    "backend_id": "nvidia",
+    "circuit_metrics": null,
+    "end_time": 1770621915.5209482,
+    "group_metrics": {
+      "avg_create_times": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "avg_depths": [
+        64.0,
+        144.0,
+        256.0
+      ],
+      "avg_elapsed_times": [
+        0.056,
+        0.002,
+        0.001
+      ],
+      "avg_exec_creating_times": [],
+      "avg_exec_running_times": [],
+      "avg_exec_times": [
+        0.056,
+        0.002,
+        0.001
+      ],
+      "avg_exec_validating_times": [],
+      "avg_fidelities": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "avg_hf_fidelities": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "avg_tr_depths": [
+        64.0,
+        144.0,
+        256.0
+      ],
+      "avg_tr_n2qs": [
+        48.0,
+        108.0,
+        192.0
+      ],
+      "avg_tr_xis": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "avg_xis": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "groups": [
+        "4",
+        "6",
+        "8"
+      ],
+      "job_ids": [
+        [],
+        [],
+        []
+      ],
+      "std_create_times": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "std_elapsed_times": [
+        0.045,
+        0.001,
+        0.0
+      ],
+      "std_exec_times": [
+        0.045,
+        0.001,
+        0.0
+      ],
+      "std_fidelities": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "std_hf_fidelities": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "start_time": 1770621914.7238963
+  },
+  "Benchmark Results - Phase Estimation - cudaq": {
+    "backend_id": "nvidia",
+    "circuit_metrics": null,
+    "end_time": 1769917412.0661304,
+    "group_metrics": {
+      "avg_create_times": [
+        0.0,
+        0.0
+      ],
+      "avg_depths": [
+        2500.0,
+        2704.0
+      ],
+      "avg_elapsed_times": [
+        0.014,
+        0.019
+      ],
+      "avg_exec_creating_times": [],
+      "avg_exec_running_times": [],
+      "avg_exec_times": [
+        0.014,
+        0.019
+      ],
+      "avg_exec_validating_times": [],
+      "avg_fidelities": [
+        0.0,
+        0.0
+      ],
+      "avg_hf_fidelities": [
+        0.0,
+        0.0
+      ],
+      "avg_tr_depths": [
+        2500.0,
+        2704.0
+      ],
+      "avg_tr_n2qs": [
+        1875.0,
+        2028.0
+      ],
+      "avg_tr_xis": [
+        0.5,
+        0.5
+      ],
+      "avg_xis": [
+        0.5,
+        0.5
+      ],
+      "groups": [
+        "25",
+        "26"
+      ],
+      "job_ids": [
+        [],
+        []
+      ],
+      "std_create_times": [
+        0.0,
+        0.0
+      ],
+      "std_elapsed_times": [
+        0.0,
+        0.0
+      ],
+      "std_exec_times": [
+        0.0,
+        0.0
+      ],
+      "std_fidelities": [
+        0.0,
+        0.0
+      ],
+      "std_hf_fidelities": [
+        0.0,
+        0.0
+      ]
+    },
+    "start_time": 1769917411.2178211
+  },
+  "Benchmark Results - Quantum Fourier Transform (1) - cudaq": {
+    "backend_id": "nvidia",
+    "circuit_metrics": null,
+    "end_time": 1769918774.2141988,
+    "group_metrics": {
+      "avg_create_times": [
+        0.0,
+        0.0
+      ],
+      "avg_depths": [
+        2500.0,
+        2704.0
+      ],
+      "avg_elapsed_times": [
+        0.025,
+        0.033
+      ],
+      "avg_exec_creating_times": [],
+      "avg_exec_running_times": [],
+      "avg_exec_times": [
+        0.025,
+        0.033
+      ],
+      "avg_exec_validating_times": [],
+      "avg_fidelities": [
+        0.992,
+        0.994
+      ],
+      "avg_hf_fidelities": [
+        0.992,
+        0.994
+      ],
+      "avg_tr_depths": [
+        2500.0,
+        2704.0
+      ],
+      "avg_tr_n2qs": [
+        1875.0,
+        2028.0
+      ],
+      "avg_tr_xis": [
+        0.5,
+        0.5
+      ],
+      "avg_xis": [
+        0.5,
+        0.5
+      ],
+      "groups": [
+        "25",
+        "26"
+      ],
+      "job_ids": [
+        [],
+        []
+      ],
+      "std_create_times": [
+        0.0,
+        0.0
+      ],
+      "std_elapsed_times": [
+        0.0,
+        0.0
+      ],
+      "std_exec_times": [
+        0.0,
+        0.0
+      ],
+      "std_fidelities": [
+        0.001,
+        0.0
+      ],
+      "std_hf_fidelities": [
+        0.001,
+        0.0
+      ]
+    },
+    "start_time": 1769918773.2681336
+  }
+}

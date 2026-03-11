@@ -1,0 +1,57 @@
+[
+  {
+    "exp_time_computed": 0.41,
+    "exp_time_exact": null,
+    "exp_value_computed": -41.0003,
+    "exp_value_exact": null,
+    "group": 25,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 40
+  },
+  {
+    "exp_time_computed": 0.147,
+    "exp_time_exact": null,
+    "exp_value_computed": -26.0001,
+    "exp_value_exact": null,
+    "group": 26,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 25
+  },
+  {
+    "exp_time_computed": 0.157,
+    "exp_time_exact": 0.422,
+    "exp_value_computed": -16.0,
+    "exp_value_exact": -15.0,
+    "group": 16,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 1.067,
+    "term_count": 15
+  },
+  {
+    "exp_time_computed": 0.107,
+    "exp_time_exact": null,
+    "exp_value_computed": -18.0001,
+    "exp_value_exact": null,
+    "group": 18,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 17
+  },
+  {
+    "exp_time_computed": 0.159,
+    "exp_time_exact": null,
+    "exp_value_computed": -24.0001,
+    "exp_value_exact": null,
+    "group": 24,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 23
+  }
+]

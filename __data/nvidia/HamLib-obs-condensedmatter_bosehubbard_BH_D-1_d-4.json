@@ -1,0 +1,101 @@
+[
+  {
+    "exp_time_computed": 0.137,
+    "exp_time_exact": 9.54,
+    "exp_value_computed": 215.4917,
+    "exp_value_exact": 240.0,
+    "group": 16,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.898,
+    "term_count": 249
+  },
+  {
+    "exp_time_computed": 0.244,
+    "exp_time_exact": null,
+    "exp_value_computed": 358.9584,
+    "exp_value_exact": null,
+    "group": 24,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 389
+  },
+  {
+    "exp_time_computed": 0.805,
+    "exp_time_exact": null,
+    "exp_value_computed": 359.9163,
+    "exp_value_exact": null,
+    "group": 24,
+    "group_method": "simple",
+    "num_circuits_to_execute": 9,
+    "simulation_quality": 0.0,
+    "term_count": 389
+  },
+  {
+    "exp_time_computed": 3.495,
+    "exp_time_exact": null,
+    "exp_value_computed": 418.8784,
+    "exp_value_exact": null,
+    "group": 28,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 459
+  },
+  {
+    "exp_time_computed": 6.503,
+    "exp_time_exact": null,
+    "exp_value_computed": 419.7651,
+    "exp_value_exact": null,
+    "group": 28,
+    "group_method": "simple",
+    "num_circuits_to_execute": 9,
+    "simulation_quality": 0.0,
+    "term_count": 459
+  },
+  {
+    "exp_time_computed": 38.755,
+    "exp_time_exact": null,
+    "exp_value_computed": 478.8386,
+    "exp_value_exact": null,
+    "group": 32,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 529
+  },
+  {
+    "exp_time_computed": 216.897,
+    "exp_time_exact": null,
+    "exp_value_computed": 479.6898,
+    "exp_value_exact": null,
+    "group": 32,
+    "group_method": "simple",
+    "num_circuits_to_execute": 11,
+    "simulation_quality": 0.0,
+    "term_count": 529
+  },
+  {
+    "exp_time_computed": 0.148,
+    "exp_time_exact": null,
+    "exp_value_computed": 298.9903,
+    "exp_value_exact": null,
+    "group": 20,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 319
+  },
+  {
+    "exp_time_computed": 0.428,
+    "exp_time_exact": null,
+    "exp_value_computed": 299.9241,
+    "exp_value_exact": null,
+    "group": 20,
+    "group_method": "simple",
+    "num_circuits_to_execute": 11,
+    "simulation_quality": 0.0,
+    "term_count": 319
+  }
+]

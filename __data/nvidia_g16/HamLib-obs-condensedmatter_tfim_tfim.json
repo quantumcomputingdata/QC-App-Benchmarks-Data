@@ -55,9 +55,9 @@
     "term_count": 56
   },
   {
-    "exp_time_computed": 0.138,
+    "exp_time_computed": 0.091,
     "exp_time_exact": null,
-    "exp_value_computed": -19.264,
+    "exp_value_computed": -19.4768,
     "exp_value_exact": null,
     "group": 20,
     "group_method": "simple",
@@ -108,5 +108,82 @@
     "num_circuits_to_execute": 2,
     "simulation_quality": 0.0,
     "term_count": 56
+  },
+  {
+    "exp_time_computed": 0.01,
+    "exp_time_exact": 0.026,
+    "exp_value_computed": -7.9312,
+    "exp_value_exact": -8.0,
+    "group": 8,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.991,
+    "term_count": 16
+  },
+  {
+    "exp_time_computed": 0.017,
+    "exp_time_exact": 0.034,
+    "exp_value_computed": -6.8232,
+    "exp_value_exact": -7.0,
+    "group": 9,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.975,
+    "term_count": 18
+  },
+  {
+    "exp_time_computed": 0.034,
+    "exp_time_exact": 0.04,
+    "exp_value_computed": -9.748,
+    "exp_value_exact": -10.0,
+    "group": 10,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.975,
+    "term_count": 20
+  },
+  {
+    "exp_time_computed": 0.03,
+    "exp_time_exact": 0.065,
+    "exp_value_computed": -11.548,
+    "exp_value_exact": -12.0,
+    "group": 12,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.962,
+    "term_count": 24
+  },
+  {
+    "exp_time_computed": 0.065,
+    "exp_time_exact": 0.143,
+    "exp_value_computed": -13.6664,
+    "exp_value_exact": -14.0,
+    "group": 14,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.976,
+    "term_count": 28
+  },
+  {
+    "exp_time_computed": 0.076,
+    "exp_time_exact": 0.361,
+    "exp_value_computed": -15.464,
+    "exp_value_exact": -16.0,
+    "group": 16,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.966,
+    "term_count": 32
+  },
+  {
+    "exp_time_computed": 0.123,
+    "exp_time_exact": null,
+    "exp_value_computed": -17.4264,
+    "exp_value_exact": null,
+    "group": 18,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.0,
+    "term_count": 36
   }
 ]

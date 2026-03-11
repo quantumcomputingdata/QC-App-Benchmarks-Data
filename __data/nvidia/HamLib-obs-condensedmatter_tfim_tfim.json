@@ -1,0 +1,112 @@
+[
+  {
+    "exp_time_computed": 0.318,
+    "exp_time_exact": null,
+    "exp_value_computed": -20.4321,
+    "exp_value_exact": null,
+    "group": 20,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 40
+  },
+  {
+    "exp_time_computed": 0.02,
+    "exp_time_exact": null,
+    "exp_value_computed": -22.3753,
+    "exp_value_exact": null,
+    "group": 22,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 44
+  },
+  {
+    "exp_time_computed": 0.057,
+    "exp_time_exact": null,
+    "exp_value_computed": -24.3185,
+    "exp_value_exact": null,
+    "group": 24,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 48
+  },
+  {
+    "exp_time_computed": 0.19,
+    "exp_time_exact": null,
+    "exp_value_computed": -26.2617,
+    "exp_value_exact": null,
+    "group": 26,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 52
+  },
+  {
+    "exp_time_computed": 0.781,
+    "exp_time_exact": null,
+    "exp_value_computed": -28.2049,
+    "exp_value_exact": null,
+    "group": 28,
+    "group_method": "SpinOperator",
+    "num_circuits_to_execute": 0,
+    "simulation_quality": 0.0,
+    "term_count": 56
+  },
+  {
+    "exp_time_computed": 0.434,
+    "exp_time_exact": null,
+    "exp_value_computed": -19.392,
+    "exp_value_exact": null,
+    "group": 20,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.0,
+    "term_count": 40
+  },
+  {
+    "exp_time_computed": 0.193,
+    "exp_time_exact": null,
+    "exp_value_computed": -21.5496,
+    "exp_value_exact": null,
+    "group": 22,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.0,
+    "term_count": 44
+  },
+  {
+    "exp_time_computed": 0.266,
+    "exp_time_exact": null,
+    "exp_value_computed": -23.2232,
+    "exp_value_exact": null,
+    "group": 24,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.0,
+    "term_count": 48
+  },
+  {
+    "exp_time_computed": 0.554,
+    "exp_time_exact": null,
+    "exp_value_computed": -25.1776,
+    "exp_value_exact": null,
+    "group": 26,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.0,
+    "term_count": 52
+  },
+  {
+    "exp_time_computed": 1.691,
+    "exp_time_exact": null,
+    "exp_value_computed": -27.2264,
+    "exp_value_exact": null,
+    "group": 28,
+    "group_method": "simple",
+    "num_circuits_to_execute": 2,
+    "simulation_quality": 0.0,
+    "term_count": 56
+  }
+]
