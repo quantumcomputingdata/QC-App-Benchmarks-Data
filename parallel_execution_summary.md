@@ -352,8 +352,68 @@ These plots focus specifically on the parallel circuit execution mode (`-pm mpi`
 
 ---
 
+---
+
+## QED-C Benchmark GPU Scaling
+
+In addition to the HamLib Hamiltonian simulation benchmarks, we evaluated GPU scaling performance across the standard QED-C application-oriented benchmarks. These benchmarks represent common quantum algorithm primitives and provide insight into how different circuit structures scale with increasing GPU resources.
+
+### Benchmarks Evaluated
+
+| Benchmark | Description | Circuit Characteristics |
+|-----------|-------------|------------------------|
+| **Quantum Fourier Transform (QFT)** | Core subroutine for phase estimation and many quantum algorithms | Deep circuit with O(n²) two-qubit gates; highly structured |
+| **Phase Estimation** | Estimates eigenvalues of unitary operators | Uses QFT as subroutine; controlled rotations |
+| **Hidden Shift** | Determines hidden shift in bent functions | Hadamard-heavy; demonstrates quantum advantage for specific oracle problems |
+
+### Test Configuration
+
+**System:** NERSC Perlmutter
+**GPU counts:** 1, 2, 4, 8, 16, 32, 64, 128, 256 GPUs
+**Mode:** mgpu state-vector distribution (GPUs share memory for larger qubit simulations)
+**Qubit range:** Varies by benchmark and GPU count (higher GPU counts enable larger simulations)
+
+### Figure: benchmark_scaling_combined
+
+![QED-C Benchmark GPU Scaling](__images/benchmark_scaling_combined.png)
+
+**Files:** `__images/benchmark_scaling_combined.png`, `__images/benchmark_scaling_combined.pdf`
+
+**Caption:** GPU scaling behavior for QED-C application-oriented benchmarks using CUDA-Q mgpu mode. Each subplot shows execution time (log scale) versus qubit count for GPU configurations ranging from 1 to 256 GPUs. The mgpu mode distributes the quantum state vector across GPU memories, enabling simulation of larger qubit counts than possible on a single GPU. Execution time grows exponentially with qubit count (reflecting O(2^n) state vector size), while increasing GPU count shifts the curves downward, indicating reduced execution time for fixed qubit width.
+
+**Description:** These benchmarks utilize CUDA-Q's mgpu mode, where multiple GPUs collaborate to simulate a single quantum circuit by distributing the state vector across their combined memory. Unlike the parallel circuit execution mode used for Hamiltonian simulation (where independent circuits run on separate GPUs), mgpu mode accelerates individual circuit execution through distributed state vector operations. The scaling behavior reflects both the computational speedup from parallel gate application and the communication overhead of synchronizing state vector partitions across GPUs. For deep circuits like QFT and Phase Estimation, the computation-to-communication ratio is favorable, yielding good scaling efficiency.
+
+### Individual Benchmark Plots
+
+| Figure | Files | Notes |
+|--------|-------|-------|
+| QFT | `benchmark_scaling_quantum_fourier_transform.{png,pdf}` | Deep circuit with many controlled rotations; benefits from mgpu parallelization |
+| Phase Estimation | `benchmark_scaling_phase_estimation.{png,pdf}` | Builds on QFT; similar scaling characteristics |
+| Hidden Shift | `benchmark_scaling_hidden_shift.{png,pdf}` | Hadamard-dominated circuit; efficient gate parallelization |
+
+### Interpretation
+
+**Key observations:**
+
+1. **Exponential scaling with qubits:** All benchmarks show the expected exponential growth in execution time with qubit count, reflecting the O(2^n) state vector size for n-qubit simulation.
+
+2. **Linear speedup with GPUs:** For sufficiently large circuits, doubling the GPU count approximately halves execution time, indicating efficient state vector distribution and minimal communication overhead.
+
+3. **Minimum efficient problem size:** Very small qubit counts show diminishing returns from additional GPUs, as communication overhead dominates. The crossover point depends on circuit depth and GPU interconnect bandwidth.
+
+4. **Extended qubit reach:** The primary benefit of mgpu mode is enabling simulation of larger qubit counts. With 256 GPUs, qubit counts that would exhaust single-GPU memory become tractable.
+
+5. **Circuit structure matters:** Circuits with regular structure (like QFT's controlled rotation pattern) may exhibit better cache behavior and more predictable communication patterns than irregular circuits.
+
+---
+
 ## Raw Data Files
 
+### HamLib Observable Benchmarks
 - `tt-tfim.txt` - TFIM benchmark output
 - `tt-bh.txt` - Bose-Hubbard benchmark output
 - `tt-h2.txt` - H2 (Hydrogen) chemistry benchmark output
+
+### QED-C Benchmark Scaling
+- `__data/DATA-nvidia-1g-1.json` - Single GPU results
+- `__data/DATA-nvidia-2g-1.json` through `DATA-nvidia-256g-1.json` - Multi-GPU results
