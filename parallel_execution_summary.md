@@ -296,6 +296,8 @@ These plots compare four execution configurations at a fixed GPU count, showing 
 
 #### Figure: parallel_exec_combined
 
+![Parallel Execution Mode Comparison](__images/parallel_exec_combined.png)
+
 **Files:** `__images/parallel_exec_combined.png`, `__images/parallel_exec_combined.pdf`
 
 **Caption:** Comparison of CUDA-Q execution modes for Hamiltonian simulation across three benchmark systems. Each subplot shows execution time (log scale) versus qubit count for four configurations: SpinOperator method on single GPU (baseline), SpinOperator with mgpu state-vector distribution, simple Pauli sampling on single GPU, and simple sampling with MPI parallel circuit execution. The TFIM Hamiltonian exhibits minimal benefit from circuit parallelism due to its efficient grouping into only 2 measurement circuits, while the H2 chemistry Hamiltonian with 1251 circuit groups demonstrates near-linear scaling with GPU count.
@@ -317,6 +319,8 @@ These plots compare four execution configurations at a fixed GPU count, showing 
 These plots focus specifically on the parallel circuit execution mode (`-pm mpi` with simple sampling), showing how execution time decreases as the number of GPUs increases from 1 to 16.
 
 #### Figure: gpu_scaling_combined
+
+![GPU Scaling for Parallel Circuit Execution](__images/gpu_scaling_combined.png)
 
 **Files:** `__images/gpu_scaling_combined.png`, `__images/gpu_scaling_combined.pdf`
 
