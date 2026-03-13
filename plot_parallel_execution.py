@@ -11,7 +11,15 @@ Reads JSON data files from nvidia_g* directories and creates plots:
    - One trace per GPU count (1, 4, 8, 16)
 
 Usage:
-    python plot_parallel_execution.py [--data_dir PATH] [--output_dir PATH] [--num_gpus N]
+    python plot_parallel_execution.py [--data_dir PATH] [--output_dir PATH] [--num_gpus N] [--data_suffix NAME]
+
+Examples:
+    # Use data from __data/ and output to __images/
+    python plot_parallel_execution.py
+
+    # Use archived data from __data/Perlmutter-80GB-260310/ and output to __images/Perlmutter-80GB-260310/
+    python plot_parallel_execution.py --data_suffix Perlmutter-80GB-260310
+    python plot_parallel_execution.py -suffix Perlmutter-80GB-260310
 """
 
 import json
@@ -374,13 +382,26 @@ def main():
                        help="Directory to save plot images")
     parser.add_argument("--num_gpus", type=int, default=16,
                        help="Number of GPUs for MPI comparison (default: 16)")
+    parser.add_argument("--data_suffix", "-suffix", type=str, default=None,
+                       help="Subdirectory name for archived data (e.g., 'Perlmutter-80GB-260310')")
 
     args = parser.parse_args()
 
     # Resolve paths
     script_dir = Path(__file__).parent
-    data_dir = script_dir / args.data_dir
-    output_dir = script_dir / args.output_dir
+
+    # If suffix provided, look in subdirectory for data and create subdirectory for output
+    if args.data_suffix:
+        data_dir = script_dir / args.data_dir / args.data_suffix
+        output_dir = script_dir / args.output_dir / args.data_suffix
+        print(f"Using archived data: {args.data_suffix}")
+    else:
+        data_dir = script_dir / args.data_dir
+        output_dir = script_dir / args.output_dir
+
+    print(f"Data directory:   {data_dir}")
+    print(f"Output directory: {output_dir}")
+    print()
 
     # Discover Hamiltonians and GPU counts from data files
     hamiltonians = discover_hamiltonians(data_dir)

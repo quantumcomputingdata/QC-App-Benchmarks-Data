@@ -10,7 +10,15 @@ Each plot shows:
 - One trace per GPU count (1, 2, 4, 8, 16, 32, 64, 128, 256)
 
 Usage:
-    python plot_benchmark_scaling.py [--data_dir PATH] [--output_dir PATH]
+    python plot_benchmark_scaling.py [--data_dir PATH] [--output_dir PATH] [--data_suffix NAME]
+
+Examples:
+    # Use data from __data/ and output to __images/
+    python plot_benchmark_scaling.py
+
+    # Use archived data from __data/Perlmutter-80GB-260310/ and output to __images/Perlmutter-80GB-260310/
+    python plot_benchmark_scaling.py --data_suffix Perlmutter-80GB-260310
+    python plot_benchmark_scaling.py -suffix Perlmutter-80GB-260310
 """
 
 import json
@@ -270,13 +278,26 @@ def main():
                        help="Directory containing DATA-nvidia-*g-1.json files")
     parser.add_argument("--output_dir", type=str, default="__images",
                        help="Directory to save plot images")
+    parser.add_argument("--data_suffix", "-suffix", type=str, default=None,
+                       help="Subdirectory name for archived data (e.g., 'Perlmutter-80GB-260310')")
 
     args = parser.parse_args()
 
     # Resolve paths
     script_dir = Path(__file__).parent
-    data_dir = script_dir / args.data_dir
-    output_dir = script_dir / args.output_dir
+
+    # If suffix provided, look in subdirectory for data and create subdirectory for output
+    if args.data_suffix:
+        data_dir = script_dir / args.data_dir / args.data_suffix
+        output_dir = script_dir / args.output_dir / args.data_suffix
+        print(f"Using archived data: {args.data_suffix}")
+    else:
+        data_dir = script_dir / args.data_dir
+        output_dir = script_dir / args.output_dir
+
+    print(f"Data directory:   {data_dir}")
+    print(f"Output directory: {output_dir}")
+    print()
 
     # Discover GPU files
     gpu_files = discover_gpu_files(data_dir)
