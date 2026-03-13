@@ -73,11 +73,37 @@ The default behavior of the benchmarks is to execute over a range of qubit width
 ```
 source srun_bm.sh 4 25 26 quantum_fourier_transform qft_benchmark
 ```
-We provide two additional scripts for running the **hamlib** benchmark, which is treated as a special case, since it has several app-specific arguments. 
+We provide two additional scripts for running the **hamlib** benchmark, which is treated as a special case, since it has several app-specific arguments.
 ```
 source srun_hamlib.sh 4 25 26         # use observable method
 source srun_hamlib_m3.sh 4 25 26      # use method 3 for fidelity check
 ```
+
+### HamLib Comprehensive Testing
+
+The **run_hamlib_test.sh** script executes the HamLib benchmark in four different execution modes for a given Hamiltonian, allowing comparison of parallelization strategies:
+
+1. **SpinOperator, Single GPU** - Baseline using CUDA-Q native `observe()`
+2. **simple, Single GPU** - Baseline using Pauli term sampling
+3. **SpinOperator, mgpu mode** - State vector distributed across GPUs
+4. **simple, -pm mpi** - Parallel circuit execution across GPUs
+
+```bash
+# Usage: run_hamlib_test.sh NUM_GPUS MIN_QUBITS MAX_QUBITS [additional args]
+source run_hamlib_test.sh 16 20 28 -ham condensedmatter/tfim/tfim -params 1D-grid:pbc,h:2
+```
+
+The **run_hamlib_tests_3.sh** script runs `run_hamlib_test.sh` across three representative Hamiltonians:
+- TFIM (Transverse Field Ising Model) - simple structure, 2 circuit groups
+- Bose-Hubbard - intermediate complexity, 9-11 circuit groups
+- H2 (Hydrogen) - chemistry Hamiltonian, many circuit groups
+
+```bash
+# Usage: run_hamlib_tests_3.sh NUM_GPUS [additional args]
+source run_hamlib_tests_3.sh 16
+```
+
+Data from these tests are stored in `__data/nvidia_g{N}/` directories, with separate JSON files per Hamiltonian.
 
 ### Run All Benchmarks from One Script and Sweep Available Qubit Widths
 
@@ -135,4 +161,95 @@ At the top-level, there is currently checked in the rcs.py file, which contains 
 
 ## Data Collection
 
-Data are stored in **_data** directory and images stored in **__images** with an appendage that indicates the number of GPUs on which the results were obtained.
+Data are stored in the **__data** directory and images are stored in the **__images** directory.
+
+### Data Directory Structure
+
+```
+__data/
+├── nvidia_g1/                           # HamLib data for 1 GPU
+│   └── HamLib-obs-{hamiltonian}.json
+├── nvidia_g4/                           # HamLib data for 4 GPUs
+├── nvidia_g8/                           # HamLib data for 8 GPUs
+├── nvidia_g16/                          # HamLib data for 16 GPUs
+├── DATA-nvidia-1g-1.json                # QED-C benchmark data for 1 GPU
+├── DATA-nvidia-16g-1.json               # QED-C benchmark data for 16 GPUs
+└── Perlmutter-80GB-260310/              # Archived dataset (example)
+    ├── nvidia_g1/
+    ├── nvidia_g16/
+    └── DATA-nvidia-*g-1.json
+```
+
+## Visualization
+
+Two plotting programs are provided for generating publication-ready figures from benchmark data.
+
+### plot_parallel_execution.py
+
+Generates plots for HamLib observable benchmark results, comparing execution modes and GPU scaling.
+
+**Plots generated:**
+- Mode comparison: SpinOperator vs simple, 1 GPU vs N GPUs
+- GPU scaling: Execution time across 1, 4, 8, 16 GPUs for parallel circuit execution
+
+| Argument | Short | Description | Default |
+|----------|-------|-------------|---------|
+| `--data_dir` | | Base data directory | `__data` |
+| `--output_dir` | | Output directory for images | `__images` |
+| `--num_gpus` | | GPU count for mode comparison | `16` |
+| `--data_suffix` | `-suffix` | Subdirectory for archived data | None |
+
+```bash
+# Generate plots from top-level data
+python plot_parallel_execution.py
+
+# Generate plots from archived dataset
+python plot_parallel_execution.py --data_suffix Perlmutter-80GB-260310
+python plot_parallel_execution.py -suffix Perlmutter-80GB-260310
+```
+
+**Output files:**
+- `parallel_exec_{hamiltonian}.{png,pdf}` - Individual Hamiltonian plots
+- `parallel_exec_combined.{png,pdf}` - All Hamiltonians side-by-side
+- `gpu_scaling_{hamiltonian}.{png,pdf}` - GPU scaling per Hamiltonian
+- `gpu_scaling_combined.{png,pdf}` - GPU scaling combined
+
+### plot_benchmark_scaling.py
+
+Generates plots for QED-C fidelity benchmark results showing GPU scaling.
+
+**Plots generated:**
+- Execution time vs qubits with traces for each GPU count (1-256)
+
+| Argument | Short | Description | Default |
+|----------|-------|-------------|---------|
+| `--data_dir` | | Base data directory | `__data` |
+| `--output_dir` | | Output directory for images | `__images` |
+| `--data_suffix` | `-suffix` | Subdirectory for archived data | None |
+
+```bash
+# Generate plots from top-level data
+python plot_benchmark_scaling.py
+
+# Generate plots from archived dataset
+python plot_benchmark_scaling.py --data_suffix Perlmutter-80GB-260310
+python plot_benchmark_scaling.py -suffix Perlmutter-80GB-260310
+```
+
+**Output files:**
+- `benchmark_scaling_{benchmark}.{png,pdf}` - Individual benchmark plots
+- `benchmark_scaling_combined.{png,pdf}` - All benchmarks side-by-side
+
+### Archiving Data
+
+For paper submissions, copy final datasets to a named subdirectory under `__data/`:
+```bash
+# Create archive with system name, configuration, and date
+mkdir __data/Perlmutter-80GB-260310
+cp -r __data/nvidia_g* __data/Perlmutter-80GB-260310/
+cp __data/DATA-nvidia-*g-1.json __data/Perlmutter-80GB-260310/
+
+# Generate plots from archived data (creates __images/Perlmutter-80GB-260310/)
+python plot_parallel_execution.py -suffix Perlmutter-80GB-260310
+python plot_benchmark_scaling.py -suffix Perlmutter-80GB-260310
+```
