@@ -86,7 +86,7 @@ The **run_hamlib_test.sh** script executes the HamLib benchmark in four differen
 1. **SpinOperator, Single GPU** - Baseline using CUDA-Q native `observe()`
 2. **simple, Single GPU** - Baseline using Pauli term sampling
 3. **SpinOperator, mgpu mode** - State vector distributed across GPUs
-4. **simple, -pm mpi** - Parallel circuit execution across GPUs
+4. **simple, -gpc 1** - Parallel circuit execution across GPUs
 
 ```bash
 # Usage: run_hamlib_test.sh NUM_GPUS MIN_QUBITS MAX_QUBITS [additional args]

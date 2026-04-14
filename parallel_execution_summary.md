@@ -20,7 +20,7 @@ There are two fundamentally different approaches to utilizing multiple GPUs:
 
 #### 1. mgpu Mode (State Vector Distribution)
 
-When running with MPI (`-m mpi4py`) without the `-pm mpi` flag, CUDA-Q uses **mgpu mode**. In this mode, all GPUs collaborate to simulate a single quantum circuit by distributing the state vector across GPU memories. This is beneficial for:
+When running with MPI (`-m mpi4py`) without the `--gpus_per_circuit` flag, CUDA-Q uses **mgpu mode**. In this mode, all GPUs collaborate to simulate a single quantum circuit by distributing the state vector across GPU memories. This is beneficial for:
 
 - Large circuits that exceed single-GPU memory capacity
 - Circuits where the state vector computation dominates execution time
@@ -28,9 +28,9 @@ When running with MPI (`-m mpi4py`) without the `-pm mpi` flag, CUDA-Q uses **mg
 
 The state vector is partitioned across GPUs, and MPI handles communication between them during gate operations.
 
-#### 2. Parallel Circuit Execution (-pm mpi)
+#### 2. Parallel Circuit Execution (--gpus_per_circuit 1)
 
-When running with MPI and the `-pm mpi` flag, circuits are **distributed across MPI ranks** for independent parallel execution. Each rank executes a subset of circuits on its assigned GPU, and results are gathered to rank 0. This is beneficial for:
+When running with MPI and `--gpus_per_circuit 1` (`-gpc 1`), circuits are **distributed across MPI ranks** for independent parallel execution. Each rank executes a subset of circuits on its assigned GPU, and results are gathered to rank 0. This is beneficial for:
 
 - Workloads with many independent circuits (e.g., Pauli term sampling)
 - Circuits small enough to fit on a single GPU
@@ -70,7 +70,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 python hamlib_simulation_benchmark.py -a cudaq -obs -n 20:28 -ham <hamiltonian> -g simple -k 1 -s 10000
 
 # Simple sampling, parallel circuit execution (16 GPUs)
-srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:28 -ham <hamiltonian> -g simple -k 1 -s 10000 -pm mpi
+srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:28 -ham <hamiltonian> -g simple -k 1 -s 10000 -gpc 1
 ```
 
 ---
@@ -96,7 +96,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 
 #### Simple Sampling Method (Multiple Circuits, Parallel Execution)
 
-| Qubits | Circuits | Single GPU (sec) | -pm mpi 16 GPUs (sec) | Speedup |
+| Qubits | Circuits | Single GPU (sec) | -gpc 1 16 GPUs (sec) | Speedup |
 |--------|----------|------------------|-----------------------|---------|
 | 20     | 2        | 0.422            | 0.228                 | 1.9x    |
 | 22     | 2        | 0.184            | 0.117                 | 1.6x    |
@@ -123,7 +123,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 
 #### Simple Sampling Method (Multiple Circuits, Parallel Execution)
 
-| Qubits | Circuits | Single GPU (sec) | -pm mpi 16 GPUs (sec) | Speedup |
+| Qubits | Circuits | Single GPU (sec) | -gpc 1 16 GPUs (sec) | Speedup |
 |--------|----------|------------------|-----------------------|---------|
 | 20     | 11       | 0.996            | 0.428                 | 2.3x    |
 | 24     | 9        | 3.636            | 0.805                 | 4.5x    |
@@ -149,7 +149,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 
 #### Simple Sampling Method (Multiple Circuits, Parallel Execution)
 
-| Qubits | Circuits | Single GPU (sec) | -pm mpi 16 GPUs (sec) | Speedup |
+| Qubits | Circuits | Single GPU (sec) | -gpc 1 16 GPUs (sec) | Speedup |
 |--------|----------|------------------|-----------------------|---------|
 | 8      | 54       | 0.917            | 0.230                 | 4.0x    |
 | 12     | 59       | 1.127            | 0.188                 | 6.0x    |
@@ -168,7 +168,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 | SpinOperator, 1 GPU | 0.842 | - | Baseline |
 | SpinOperator, mgpu 16 GPUs | 0.607 | 1.4x | State vector distributed |
 | Simple, 1 GPU | 1.699 | - | 2 circuits sequential |
-| Simple, -pm mpi 16 GPUs | 0.898 | 1.9x | 2 circuits parallel (max 2x possible) |
+| Simple, -gpc 1 16 GPUs | 0.898 | 1.9x | 2 circuits parallel (max 2x possible) |
 
 #### Bose-Hubbard (complex structure, 9 circuit groups)
 
@@ -177,7 +177,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 | SpinOperator, 1 GPU | 6.301 | - | Baseline |
 | SpinOperator, mgpu 16 GPUs | 3.495 | 1.8x | State vector distributed |
 | Simple, 1 GPU | 53.541 | - | 9 circuits sequential |
-| Simple, -pm mpi 16 GPUs | 6.503 | **8.2x** | 9 circuits parallel |
+| Simple, -gpc 1 16 GPUs | 6.503 | **8.2x** | 9 circuits parallel |
 
 #### H2 at 20 Qubits (chemistry, 1251 circuit groups)
 
@@ -186,7 +186,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 | SpinOperator, 1 GPU | 0.601 | - | Baseline |
 | SpinOperator, mgpu 16 GPUs | 0.468 | 1.3x | State vector distributed |
 | Simple, 1 GPU | 283.814 | - | 1251 circuits sequential |
-| Simple, -pm mpi 16 GPUs | 20.506 | **13.8x** | 1251 circuits parallel (~78/GPU) |
+| Simple, -gpc 1 16 GPUs | 20.506 | **13.8x** | 1251 circuits parallel (~78/GPU) |
 
 ---
 
@@ -194,7 +194,7 @@ srun -n 16 python -m mpi4py hamlib_simulation_benchmark.py -a cudaq -obs -n 20:2
 
 1. **SpinOperator + mgpu** provides modest speedup (1.1x-2.9x) but can be **slower** for mid-sized circuits (26 qubits TFIM) due to communication overhead.
 
-2. **Simple + parallel execution (-pm mpi)** scales well when there are enough circuits to distribute:
+2. **Simple + parallel execution (-gpc 1)** scales well when there are enough circuits to distribute:
    - TFIM: 1.9x speedup (only 2 circuits)
    - Bose-Hubbard: 8.2x speedup (9 circuits)
    - **H2: 13.8x speedup (1251 circuits)** - approaching theoretical 16x maximum
@@ -249,13 +249,13 @@ TFIM has relatively few Hamiltonian terms (40-56) and shallow circuit depth, mak
 |------|---------|
 | `_common/cudaq/execute.py` | Added `_execute_parallel_mpi()`, `_get_block_indices()`, modified `execute_circuits_immed()` |
 | `_common/qcb_mpi.py` | Added `gather()` and `scatter()` MPI wrapper functions |
-| `hamlib/hamlib_simulation_benchmark.py` | Added `-pm` and `-ng` CLI args, leader check after parallel execution |
+| `hamlib/hamlib_simulation_benchmark.py` | Added `-gpc` CLI arg, leader check after parallel execution |
 | `_common/qiskit/execute.py` | Added params for API compatibility |
 
 ### Key Implementation Notes
 
 1. **Circuit Distribution:** Circuits are distributed in contiguous blocks across MPI ranks
-2. **Target Override:** `-pm mpi` mode sets each rank to single-GPU target, overriding mgpu
+2. **Target Override:** `--gpus_per_circuit 1` mode sets each rank to single-GPU target, overriding mgpu
 3. **Result Gathering:** Results are gathered to rank 0 via `mpi.gather()`
 4. **Leader Check:** Non-leader ranks skip result processing after `execute_circuits_enhanced()` returns
 
@@ -278,7 +278,7 @@ TFIM has relatively few Hamiltonian terms (40-56) and shallow circuit depth, mak
 srun -n 16 python -m mpi4py benchmark.py -a cudaq -g SpinOperator ...
 
 # For many independent circuits (parallel execution):
-srun -n 16 python -m mpi4py benchmark.py -a cudaq -g simple ... -pm mpi
+srun -n 16 python -m mpi4py benchmark.py -a cudaq -g simple ... -gpc 1
 
 # Single GPU baseline:
 python benchmark.py -a cudaq ...
@@ -302,7 +302,7 @@ These plots compare four execution configurations at a fixed GPU count, showing 
 
 **Caption:** Comparison of CUDA-Q execution modes for Hamiltonian simulation across three benchmark systems. Each subplot shows execution time (log scale) versus qubit count for four configurations: SpinOperator method on single GPU (baseline), SpinOperator with mgpu state-vector distribution, simple Pauli sampling on single GPU, and simple sampling with MPI parallel circuit execution. The TFIM Hamiltonian exhibits minimal benefit from circuit parallelism due to its efficient grouping into only 2 measurement circuits, while the H2 chemistry Hamiltonian with 1251 circuit groups demonstrates near-linear scaling with GPU count.
 
-**Description:** This combined figure provides a side-by-side comparison of parallel execution performance across Hamiltonians of increasing complexity. The exponential growth in execution time with qubit count reflects the O(2^n) scaling of state vector simulation. The divergence between SpinOperator and simple sampling methods illustrates the trade-off between single-circuit efficiency and parallelization potential. For Hamiltonians that decompose into many Pauli term groups (e.g., H2 chemistry), the `-pm mpi` parallel execution mode substantially outperforms both single-GPU execution and mgpu state-vector distribution.
+**Description:** This combined figure provides a side-by-side comparison of parallel execution performance across Hamiltonians of increasing complexity. The exponential growth in execution time with qubit count reflects the O(2^n) scaling of state vector simulation. The divergence between SpinOperator and simple sampling methods illustrates the trade-off between single-circuit efficiency and parallelization potential. For Hamiltonians that decompose into many Pauli term groups (e.g., H2 chemistry), the `-gpc 1` parallel execution mode substantially outperforms both single-GPU execution and mgpu state-vector distribution.
 
 #### Individual Hamiltonian Plots
 
@@ -316,7 +316,7 @@ These plots compare four execution configurations at a fixed GPU count, showing 
 
 ### GPU Scaling Plots
 
-These plots focus specifically on the parallel circuit execution mode (`-pm mpi` with simple sampling), showing how execution time decreases as the number of GPUs increases from 1 to 16.
+These plots focus specifically on the parallel circuit execution mode (`-gpc 1` with simple sampling), showing how execution time decreases as the number of GPUs increases from 1 to 16.
 
 #### Figure: gpu_scaling_combined
 

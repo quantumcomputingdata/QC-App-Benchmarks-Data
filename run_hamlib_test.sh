@@ -44,5 +44,5 @@ srun -n $NUM_GPUS python -m mpi4py -m hamlib.hamlib_simulation_benchmark "${appa
 echo "========================================================================="
 echo Running hamlib.hamlib_simulation_benchmark "${appargs[@]}" -g simple on MPI parallel GPUs
 
-srun -n $NUM_GPUS python -m mpi4py -m hamlib.hamlib_simulation_benchmark "${appargs[@]}" -g simple -pm mpi -suffix "_g$NUM_GPUS" 2>&1 | tee hamlib.log
+srun -n $NUM_GPUS python -m mpi4py -m hamlib.hamlib_simulation_benchmark "${appargs[@]}" -g simple -gpc 1 -suffix "_g$NUM_GPUS" 2>&1 | tee hamlib.log
 

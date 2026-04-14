@@ -170,7 +170,7 @@ def create_hamiltonian_plot(ham_id, ham_name, data_1gpu, data_ngpu, num_gpus, ou
         ("SpinOperator", data_1gpu, "1 GPU", "o-", "tab:blue"),
         ("SpinOperator", data_ngpu, f"{num_gpus} GPUs (mgpu)", "s--", "tab:cyan"),
         ("simple", data_1gpu, "1 GPU", "^-", "tab:orange"),
-        ("simple", data_ngpu, f"{num_gpus} GPUs (-pm mpi)", "d--", "tab:red"),
+        ("simple", data_ngpu, f"{num_gpus} GPUs (-gpc 1)", "d--", "tab:red"),
     ]
 
     has_data = False
