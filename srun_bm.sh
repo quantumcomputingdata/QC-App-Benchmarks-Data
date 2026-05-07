@@ -14,7 +14,7 @@ echo `date`: Executing $BMDIR Benchmark on $NUM_GPUS GPUs ...
 
 #pushd $BMDIR
 
-appargs=(-a cudaq -c 2 -w -s 1000 -min $MIN -max $MAX)
+appargs=(-a cudaq -c 2 -s 1000 -min $MIN -max $MAX)
 
 echo srun -n $NUM_GPUS python -m mpi4py -m $BMDIR.$BMNAME "${appargs[@]}" 
 
