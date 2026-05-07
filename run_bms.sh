@@ -95,11 +95,11 @@ unset CUDAQ_MAX_GPU_MEMORY_GB
 ############################
 # Run the benchmark programs
 
-./srun_bm.sh $TOTAL_GPUS $MIN $MAX hidden_shift hs_benchmark
+./srun_bm.sh $TOTAL_GPUS $MIN $MAX qedcbench.hidden_shift hs_benchmark
 
-./srun_bm.sh $TOTAL_GPUS $MIN $MAX quantum_fourier_transform qft_benchmark
+./srun_bm.sh $TOTAL_GPUS $MIN $MAX qedcbench.quantum_fourier_transform qft_benchmark
 
-./srun_bm.sh $TOTAL_GPUS $MIN $MAX phase_estimation pe_benchmark
+./srun_bm.sh $TOTAL_GPUS $MIN $MAX qedcbench.phase_estimation pe_benchmark
 
 #./srun_qpe.sh $TOTAL_GPUS $MIN $MAX
 
