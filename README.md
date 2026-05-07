@@ -71,7 +71,7 @@ srun -n 4 python -m mpi4py -m qedcbench.hidden_shift.hs_benchmark -a cudaq    # 
 ```
 The default behavior of the benchmarks is to execute over a range of qubit widths, from 2 to 8 qubits. You can modify the range and other parameters using the arguments presented using the --help argument to the benchmark program. For convenience, the **srun_bm.sh** script is provided to easily control the number of GPUs to use and the range of qubit widths.  Pass the NUM_GPUS, MIN, MAX args follwed by the BMDIR and BMNAME, e.g
 ```
-source srun_bm.sh 4 25 26 quantum_fourier_transform qft_benchmark
+source srun_bm.sh 4 25 26 qedcbench.quantum_fourier_transform qft_benchmark
 ```
 We provide two additional scripts for running the **hamlib** benchmark, which is treated as a special case, since it has several app-specific arguments.
 ```
