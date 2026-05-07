@@ -56,7 +56,7 @@ Go to the top level of this repo.
 
 To run any single benchmark on just one GPU, invoke the benchmark as a module and specify the CUDA-Q API.
 ```
-python -m hidden_shift.hs_benchmark -a cudaq
+python -m qedcbench.hidden_shift.hs_benchmark -a cudaq
 ```
 
 ### Multi-GPU Execution
@@ -67,7 +67,7 @@ alloc_gpus.sh -G 4
 ```
 Once connected to the GPUs, use the **srun** command to execute any of the benchmark programs (shown here for 4 GPUs):
 ```
-srun -n 4 python -m mpi4py -m hidden_shift.hs_benchmark -a cudaq    # {add'l args, e.g. -n 4}
+srun -n 4 python -m mpi4py -m qedcbench.hidden_shift.hs_benchmark -a cudaq    # {add'l args, e.g. -n 4}
 ```
 The default behavior of the benchmarks is to execute over a range of qubit widths, from 2 to 8 qubits. You can modify the range and other parameters using the arguments presented using the --help argument to the benchmark program. For convenience, the **srun_bm.sh** script is provided to easily control the number of GPUs to use and the range of qubit widths.  Pass the NUM_GPUS, MIN, MAX args follwed by the BMDIR and BMNAME, e.g
 ```
